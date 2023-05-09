@@ -1,6 +1,7 @@
 package med.vell.api_learn_spring.controller;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import med.vell.api_learn_spring.medic.Medic;
 import med.vell.api_learn_spring.medic.MedicModel;
 import med.vell.api_learn_spring.medic.MedicRepository;
@@ -17,7 +18,7 @@ public class MedicoController {
     private MedicRepository repository;
     @PostMapping
     @Transactional
-    public void registerMedic(@RequestBody MedicModel data){
+    public void registerMedic(@RequestBody @Valid MedicModel data){
         repository.save(new Medic(data));
     }
 }
